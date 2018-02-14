@@ -26,7 +26,7 @@ W pliku `Main3.java`  napisz zapytania SQL, (dla bazy danych `cinemas_ex`), któ
 1. Wybiorą wszystkie filmy na literę W.  
 2. Wybiorą wszystkie bilety, których cena jest większa niż **15.30**.  
 3. Wybiorą wszystkie bilety, których ilość (liczba) jest większa niż **3**. 
-4. Wybiorą wszystkie filmy, które mają rating większy niż **6.5**.  
+4. Wybiorą wszystkie filmy, które mają rating większy niż **6.5**.
 
 Wywołaj zapytania w metodzie main, a następnie wyświetl ich wyniki.
 
