@@ -14,7 +14,7 @@ public class Main1 {
     public static void main(String[] args) {
 		
     	try {
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/products_ex?useSSL=false",
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/product_ex?useSSL=false",
 					"root", "coderslab");
 			String sql = "SELECT id, name, description, price FROM Products;";
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -24,10 +24,10 @@ public class Main1 {
 				String name = rs.getString("name");
 				String descr = rs.getString("description");
 				float price = rs.getFloat("price");
-				System.out.println(id + " | " + name + " | " + descr + " | " + price);
 				if (descr.length() > 10){
 					descr = descr.substring(0, 10) + "...";
 				}
+				System.out.println(id + " | " + name + " | " + descr + " | " + price);
 			}
 			
 			
