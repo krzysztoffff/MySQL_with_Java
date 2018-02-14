@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class Main2 {
 
-	public static void main(String[] args) {//wyświetlamy filmy o ratingu większym niż średnia
+	public static void main(String[] args) {// wyświetlamy filmy o ratingu większym niż średnia
 
 		try {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemas_ex?useSSL=false", "root",
@@ -24,15 +24,15 @@ public class Main2 {
 				ps.setFloat(1, avgRating);
 				ResultSet rs2 = ps.executeQuery();
 
-				while (rs.next()) {
-					int id = rs.getInt("id");
-					String name = rs.getString("name");
-					String descr = rs.getString("description");
-					float rating = rs.getFloat("price");
-					System.out.println(id + " | " + name + " | " + descr + " | " + rating);
+				while (rs2.next()) {
+					int id = rs2.getInt("id");
+					String name = rs2.getString("name");
+					String descr = rs2.getString("description");
+					float rating = rs2.getFloat("rating");
 					if (descr.length() > 10) {
 						descr = descr.substring(0, 10) + "...";
 					}
+					System.out.println(id + " | " + name + " | " + descr + " | " + rating);
 				}
 				rs2.close();
 				ps.close();
