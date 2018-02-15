@@ -1,10 +1,9 @@
-x`<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
 
 #  Zmiana i usuwanie danych
 
 Wszystkie zapytania do bazy wykonuj w **konsoli**, dodatkowo zapisz treść zapytań do plików ``java`` przygotowanych do każdego zadania.
 
-#### Zadanie 1 - rozwiązywane z wykładowcą
+#### Zadanie 1 
 
 Praca na bazie `cinemas_ex`
 
@@ -14,7 +13,6 @@ W pliku `Main1.java`:
 2. Pobierz od użytkownika identyfikator filmu z konsoli.
 3. Usuń wiersz na podstawie pobranego identyfikatora.
 
------------------------------------------------------------------------------
 
 #### Zadanie 2
 
