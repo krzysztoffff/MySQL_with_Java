@@ -29,7 +29,7 @@ public class Main1 {
 				}
 				rs.close();
 				preparedStatement.close();
-				System.out.println("podaj do usuniecia");
+				System.out.println("Podaj id które mam usunąć");
 				Scanner sc = new Scanner(System.in);
 				int id = sc.nextInt();
 				sc.close();

@@ -30,7 +30,7 @@ public class Main2 {
 			
 			preparedStatement.close();
 			Scanner scan = new Scanner(System.in);
-			System.out.println("podajid biletu");
+			System.out.println("podaj id biletu");
 			int userId = scan.nextInt();
 			scan.close();
 			sql = "UPDATE Tickets SET quantity=quantity+1 WHERE id=?;";
