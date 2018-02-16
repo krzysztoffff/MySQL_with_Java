@@ -10,21 +10,29 @@ public class Main5 {
 
 	public static void main(String[] args) {
 
+		showCinemas();
+		System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz x aby wyjść z programu.");
+
+	}
+
+	public static void showCinemas() {
+
 		try {
 			Connection connetion = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemas_ex?useSSL=false",
 					"root", "coderslab");
 			PreparedStatement ps = connetion.prepareStatement("SELECT * FROM CINEMAS;");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				System.out.println(rs.getInt("id") + " | " + rs.getString("name") + " | " + rs.getString("address") );
+				System.out.println(rs.getInt("id") + " | " + rs.getString("name") + " | " + rs.getString("address"));
 			}
-			
-			//TODO Rest of the functionalities
+
+			// TODO Rest of the functionalities
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 }
