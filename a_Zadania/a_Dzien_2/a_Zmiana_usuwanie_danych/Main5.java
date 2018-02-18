@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Main5 {
 	
@@ -40,13 +41,18 @@ public class Main5 {
 	}
 	
 	public static void editCinemas(int id) {
-		//TODO jakiś głupi błąd się wkradł
 		try {
-			Connection connection2 = DriverManager.getConnection(url, user, password);
-			PreparedStatement ps2 = connection2.prepareStatement("SELECT name, address FROM Cinemas WHERE id = 4;");
-//			ps.setInt(1, id);
-			ResultSet rs = ps2.executeQuery();
-			System.out.println(id + " | " + rs.getString("name"));
+			Connection connection = DriverManager.getConnection(url, user, password);
+			PreparedStatement ps = connection.prepareStatement("SELECT name, address FROM cinemas WHERE id = ?;");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				System.out.println("\nEdytujesz:\n" + rs.getString("name") + " | " + rs.getString("address"));
+			}
+			Scanner scan = new Scanner
+			
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
