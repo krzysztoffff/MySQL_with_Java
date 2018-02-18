@@ -1,11 +1,15 @@
 package a_Zadania.a_Dzien_2.a_Zmiana_usuwanie_danych;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main5 {
 
@@ -15,16 +19,28 @@ public class Main5 {
 
 	public static void main(String[] args) {
 		String whatToDo = "";
-		Scanner scan = new Scanner(System.in);
+
 		do {
 			System.out.println("Lista kin:\n");
 			showCinemas();
-			System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz x aby wyjść z programu.");
-			
-			whatToDo = scan.nextLine();
+			try {
+				TimeUnit.SECONDS.sleep(2);// Odczekać 2 sekundy żeby Scanner zadziałał poprawnie. Metoda prób i błędów.
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			whatToDo = askQuestions();
+
 		} while (!whatToDo.equals("x"));
-		scan.close();
 		// editCinemas(4);
+	}
+
+	public static String askQuestions() {
+		System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz x aby wyjść z programu.");
+		Scanner scan = new Scanner(System.in);
+		String whatToDo = scan.next();
+		scan.close();
+
+		return whatToDo;
 	}
 
 	public static void showCinemas() {
