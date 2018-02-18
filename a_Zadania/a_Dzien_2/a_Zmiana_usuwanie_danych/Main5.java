@@ -14,10 +14,17 @@ public class Main5 {
 	public static String password = "coderslab";
 
 	public static void main(String[] args) {
-
-		showCinemas();
-		System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz x aby wyjść z programu.");
-		editCinemas(4);
+		String whatToDo = "";
+		Scanner scan = new Scanner(System.in);
+		do {
+			System.out.println("Lista kin:\n");
+			showCinemas();
+			System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz x aby wyjść z programu.");
+			
+			whatToDo = scan.nextLine();
+		} while (!whatToDo.equals("x"));
+		scan.close();
+		// editCinemas(4);
 	}
 
 	public static void showCinemas() {
@@ -49,7 +56,7 @@ public class Main5 {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				//musi być w pętli nawet jeśli oczekuję jednego wyniku.
+				// musi być w pętli nawet jeśli oczekuję jednego wyniku.
 				System.out.println("\nEdytujesz:\n" + rs.getString("name") + " | " + rs.getString("address"));
 			}
 			Scanner scan = new Scanner(System.in);
@@ -58,13 +65,15 @@ public class Main5 {
 			System.out.println("Podaj adres\n");
 			String address = scan.nextLine();
 
-			ps = connection.prepareStatement("UPDATE cinemas SET name=?, address=? WHERE id=?;"); //UWAGA! zapytajniki, które
-			//podstawiają Stringi nie trzeba dawać w cudzysłowach
+			ps = connection.prepareStatement("UPDATE cinemas SET name=?, address=? WHERE id=?;"); // UWAGA! zapytajniki,
+																									// które
+			// podstawiają Stringi nie trzeba dawać w cudzysłowach
 			ps.setString(1, name);
 			ps.setString(2, address);
 			ps.setInt(3, id);
 			ps.executeUpdate();
 			System.out.println("Zmieniono wiersz o id" + id);
+
 			scan.close();
 			ps.close();
 			rs.close();
