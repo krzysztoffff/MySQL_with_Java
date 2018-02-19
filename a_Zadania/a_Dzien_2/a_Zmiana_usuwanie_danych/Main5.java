@@ -44,7 +44,18 @@ public class Main5 {
 
 				continue;
 			} else if (whatToDo.equals("u")) {
-				System.out.println("usuwam");
+				System.out.println("\nPodaj nr id wpisu który ma być USUNIĘTY.");
+				int id;
+				try {
+					id = scan.nextInt();
+					deleteCinema(id);
+				} catch (InputMismatchException e) {
+					System.out.println("To nie jest liczba");
+					e.printStackTrace();
+				}
+				continue;
+			} else if (!whatToDo.equals("x")) {
+				System.out.println("\n\n !--- Dokonaj wyboru z listy! ---!\n\n");
 				continue;
 			}
 
@@ -78,7 +89,6 @@ public class Main5 {
 
 			ps.close();
 			rs.close();
-			// TODO Rest of the functionalities
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -98,18 +108,20 @@ public class Main5 {
 				System.out.println("\nEdytujesz:\n" + rs.getString("name") + " | " + rs.getString("address"));
 			}
 			/*
-			 * The same problem as describe at line 19
-			 * TODO better solution in the future
-			 * */
+			 * The same problem as describe at line 19 TODO better solution in the future.
+			 * Scanner must to be in main method.
+			 */
 			Scanner scan = new Scanner(System.in);
 			System.out.println("Podaj nazwę\n");
 			String name = scan.nextLine();
 			System.out.println("Podaj adres\n");
 			String address = scan.nextLine();
 
-			ps = connection.prepareStatement("UPDATE cinemas SET name=?, address=? WHERE id=?;"); // UWAGA! zapytajniki,
-																									// które
-			// podstawiają Stringi nie trzeba dawać w cudzysłowach
+			ps = connection.prepareStatement("UPDATE cinemas SET name=?, address=? WHERE id=?;");
+			/*
+			 * UWAGA! zapytajniki, // które podstawiają Stringi nie trzeba dawać w
+			 * cudzysłowach
+			 */
 			ps.setString(1, name);
 			ps.setString(2, address);
 			ps.setInt(3, id);
@@ -124,6 +136,21 @@ public class Main5 {
 			e.printStackTrace();
 		}
 
+	}
+
+	public static void deleteCinema(int id) {
+		try {
+			Connection connection = DriverManager.getConnection(url, user, password);
+			PreparedStatement ps = connection.prepareStatement("DELETE FROM cinemas WHERE id = ?;");
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			ps.close();
+
+			System.out.println("\nUsunięto kino\n");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
