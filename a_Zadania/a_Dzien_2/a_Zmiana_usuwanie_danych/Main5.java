@@ -1,8 +1,5 @@
 package a_Zadania.a_Dzien_2.a_Zmiana_usuwanie_danych;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,9 +15,17 @@ public class Main5 {
 	public static String password = "coderslab";
 
 	public static void main(String[] args) {
-		String whatToDo = "";
-
+		Scanner scan = new Scanner(System.in); 
+		/*
+		When a Scanner is closed, it will close 
+		its input source if the source implements the Closeable interface.
+		So, now when you re-instantiate, Scanner in second method, 
+		it doesn't find any open System.in stream and hence the exception.
+		Solution: I use scanner in main method and close it in the end.
+		*/
+		String whatToDo;
 		do {
+			whatToDo = "";
 			System.out.println("Lista kin:\n");
 			showCinemas();
 			try {
@@ -30,18 +35,26 @@ public class Main5 {
 			}
 			whatToDo = askQuestions();
 
+			if (whatToDo.equals("e")) {
+				System.out.println("edytuję");
+				continue;
+			} else if (whatToDo.equals("u")) {
+				System.out.println("usuwam");
+				continue;
+			}
+
 		} while (!whatToDo.equals("x"));
 		// editCinemas(4);
 	}
 
-	public static String askQuestions() {
-		System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz x aby wyjść z programu.");
-		Scanner scan = new Scanner(System.in);
-		String whatToDo = scan.next();
-		scan.close();
-
-		return whatToDo;
-	}
+//	public static String askQuestions() {
+//		System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz x aby wyjść z programu.");
+//		Scanner scan = new Scanner(System.in);
+//		String whatToDo = scan.next();
+////		scan.close();
+//
+//		return whatToDo;
+//	}
 
 	public static void showCinemas() {
 
