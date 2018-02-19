@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main5 {
@@ -31,7 +32,16 @@ public class Main5 {
 			whatToDo = scan.nextLine();
 
 			if (whatToDo.equals("e")) {
-				System.out.println("edytuję");
+				System.out.println("\nPodaj nr id wpisu który ma być edytowany.");
+				int id;
+				try {
+					id = scan.nextInt();
+					editCinemas(id);
+				} catch (InputMismatchException e) {
+					System.out.println("To nie jest liczba");
+					e.printStackTrace();
+				}
+
 				continue;
 			} else if (whatToDo.equals("u")) {
 				System.out.println("usuwam");
@@ -87,6 +97,10 @@ public class Main5 {
 				// musi być w pętli nawet jeśli oczekuję jednego wyniku.
 				System.out.println("\nEdytujesz:\n" + rs.getString("name") + " | " + rs.getString("address"));
 			}
+			/*
+			 * The same problem as describe at line 19
+			 * TODO better solution in the future
+			 * */
 			Scanner scan = new Scanner(System.in);
 			System.out.println("Podaj nazwę\n");
 			String name = scan.nextLine();
@@ -102,7 +116,6 @@ public class Main5 {
 			ps.executeUpdate();
 			System.out.println("Zmieniono wiersz o id" + id);
 
-			scan.close();
 			ps.close();
 			rs.close();
 
