@@ -1,10 +1,9 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
 
 #  Modyfikacja tabel
 
 Wszystkie zapytania do bazy wykonuj w **konsoli**, dodatkowo zapisz treść zapytań do plików **java** przygotowanych do każdego zadania.
 
-#### Zadanie 1 - rozwiązywane z wykładowcą
+#### Zadanie 1 
 
 Praca na bazie `cinemas_ex`  
 W pliku `Main1.java`:
@@ -14,7 +13,6 @@ W pliku `Main1.java`:
 3. Zmień w tabeli `Movies` kolumnę `director` na typ `varchar(50)`.
 4. Usuń kolumnę `priceUSD` z tabeli `Tickets`.
  
------------------------------------------------------------------------------ 
 
 #### Zadanie 2
 
