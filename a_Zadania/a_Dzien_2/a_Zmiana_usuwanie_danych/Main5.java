@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Main5 {
 
@@ -15,25 +14,21 @@ public class Main5 {
 	public static String password = "coderslab";
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in); 
+		Scanner scan = new Scanner(System.in);
 		/*
-		When a Scanner is closed, it will close 
-		its input source if the source implements the Closeable interface.
-		So, now when you re-instantiate, Scanner in second method, 
-		it doesn't find any open System.in stream and hence the exception.
-		Solution: I use scanner in main method and close it in the end.
-		*/
+		 * When a Scanner is closed, it will close its input source if the source
+		 * implements the Closeable interface. So, now when you re-instantiate, Scanner
+		 * in second method, it doesn't find any open System.in stream and hence the
+		 * exception. Solution: I use scanner in main method and close it in the end.
+		 */
 		String whatToDo;
 		do {
-			whatToDo = "";
 			System.out.println("Lista kin:\n");
 			showCinemas();
-			try {
-				TimeUnit.SECONDS.sleep(2);// Odczekać 2 sekundy żeby Scanner zadziałał poprawnie. Metoda prób i błędów.
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			whatToDo = askQuestions();
+
+			System.out
+					.println("\nWpisz 'e' aby edytować, 'u' aby usunąć wybrane kino.\nWpisz 'x' aby wyjść z programu.");
+			whatToDo = scan.nextLine();
 
 			if (whatToDo.equals("e")) {
 				System.out.println("edytuję");
@@ -44,17 +39,21 @@ public class Main5 {
 			}
 
 		} while (!whatToDo.equals("x"));
-		// editCinemas(4);
+
+		System.out.println("Koniec");
+		scan.close();
+
 	}
 
-//	public static String askQuestions() {
-//		System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz x aby wyjść z programu.");
-//		Scanner scan = new Scanner(System.in);
-//		String whatToDo = scan.next();
-////		scan.close();
-//
-//		return whatToDo;
-//	}
+	// public static String askQuestions() {
+	// System.out.println("\nWpisz e aby edytować, u aby usunąć wybrane kino.\nWpisz
+	// x aby wyjść z programu.");
+	// Scanner scan = new Scanner(System.in);
+	// String whatToDo = scan.next();
+	//// scan.close();
+	//
+	// return whatToDo;
+	// }
 
 	public static void showCinemas() {
 
