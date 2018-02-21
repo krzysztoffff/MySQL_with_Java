@@ -7,5 +7,4 @@ public class Main2 {
     public String query2 = "ALTER TABLE Movies ADD isTop TINYINT DEFAULT 0;";
     public String query3 = "ALTER TABLE Cinemas ADD openTime TIME;";
     public String query4 = "ALTER TABLE Cinemas ADD closeTime TIME;";
-    public String query5 = "";
 }

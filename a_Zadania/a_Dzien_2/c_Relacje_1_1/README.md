@@ -1,4 +1,3 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
 
 #  Relacje jeden do jednego
 
@@ -6,7 +5,7 @@ Wszystkie zapytania do bazy wykonuj w **konsoli**, dodatkowo zapisz treść zapy
 
 **Część zadań w swoim poleceniu ma utworzenie relacji między tabelami, w takiej sytuacji należy zmodyfikować strukturę tabel i dodać nowe kolumny lub nowe tabele**
 
-#### Zadanie 1 - rozwiązywane z wykładowcą
+#### Zadanie 1 
 W pliku `Main1.java`:
 W bazie danych o nazwie ```products_ex``` stwórz następującą tabele:
 ```SQL
@@ -20,7 +19,6 @@ W bazie danych o nazwie ```products_ex``` stwórz następującą tabele:
 Tabela ```ClientAddress``` ma być połączona relacją jeden do jednego z tabelą ```Clients```.  
 Napisz 5 zapytań SQL, które wprowadzą adresy dla istniejących już użytkowników.
 
------------------------------------------------------------------------------
 
 #### Zadanie 2 - import bazy danych
 
