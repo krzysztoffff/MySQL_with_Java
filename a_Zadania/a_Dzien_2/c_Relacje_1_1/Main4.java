@@ -9,42 +9,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main4 {
-	
+	// Change assumptions. Instead execute queries one by one. Execute them from
+	// List<String>
 	// public String query1 = "";
 	// public String query2 = "";
 	// public String query3 = "";
-	// public String query4 = ""; 
+	// public String query4 = "";
 
 	public static void main(String[] args) {
 
-		List<String> queries = createQueries();
+		List<String> queries = createQueries(); // create List from static method.
 
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemas_ex?useSSL=false",
-					"root", "coderslab");
-			for (String query : queries) {
-				PreparedStatement ps = connection.prepareStatement(query);
-				ResultSet rs = ps.executeQuery();
-				System.out.println("\n\n" + query + ":\n");
-				while (rs.next()) {
+					"root", "coderslab"); // get connection to databyse cinemas_ex
+			for (String query : queries) {// iterate through the list
+				PreparedStatement ps = connection.prepareStatement(query); // prepare statement from the list 'queries'
+				ResultSet rs = ps.executeQuery(); // execute and save to result set value
+				System.out.println("\n\n" + query + ":\n"); // show sql query in console
+				while (rs.next()) { // check if there is more results
+					// show result in console by getting indexes of colums instead oftheir names
 					System.out.println(rs.getInt(1) + " | " + rs.getInt(2) + " | " + rs.getDouble(3) + " | "
 							+ rs.getInt(4) + " | " + rs.getString(5) + " | " + rs.getDate(6) + " | " + rs.getInt(6));
 				}
-
+				// close prepare statement
 				ps.close();
+				// close result set
 				rs.close();
 
 			}
+			// close connection
 			connection.close();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
-	public static List<String> createQueries() {
+	public static List<String> createQueries() {// create list of queries
 		List<String> queries = new ArrayList<>();
 		queries.add("SELECT * FROM tickets JOIN payments ON tickets.id=payments.id WHERE payments.type='cash';");
 		queries.add("SELECT * FROM tickets JOIN payments ON tickets.id=payments.id WHERE payments.type='transfer';");
