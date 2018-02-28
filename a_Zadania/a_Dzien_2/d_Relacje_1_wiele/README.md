@@ -1,12 +1,9 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
 
 #  Relacje jeden do wielu
 
-Wszystkie zapytania do bazy wykonuj w **konsoli**, dodatkowo zapisz treść zapytań do plików **java** przygotowanych do każdego zadania.
 
-**Część zadań w swoim poleceniu ma utworzenie relacji między tabelami, w takiej sytuacji należy zmodyfikować strukturę tabel i dodać nowe kolumny lub nowe tabele.**
 
-#### Zadanie 1 - rozwiązywane z wykładowcą
+#### Zadanie 1 
 W pliku `Main1.java`:
 
 W bazie danych o nazwie ```products_ex``` stwórz następującą tabele:
@@ -18,7 +15,6 @@ W bazie danych o nazwie ```products_ex``` stwórz następującą tabele:
 1. Tabela ```Opinions``` ma być połączona z tabelą ```Products``` relacją jeden do wielu (produkt ma wiele opinii, opinia jest przypisana do jednego produktu).
 2. Napisz po `5` zapytań, które dodadzą opinie do `3` istniejących produktów.  
 
------------------------------------------------------------------------------
 
 #### Zadanie 2
 W pliku `Main2.java`:

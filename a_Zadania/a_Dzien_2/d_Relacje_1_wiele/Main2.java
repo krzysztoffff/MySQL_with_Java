@@ -7,10 +7,10 @@ public class Main2 {
     		+ " name VARCHAR(50), PRIMARY KEY(id));";
 
     public String queryAddCategoriesSub =  "CREATE TABLE Categories_sub( id INT AUTO_INCREMENT,"
-    		+ " main_id INT, name VARCHAR(50), PRIMARY KEY (id), FOREIGN KEY (main_id)"
+    		+ " Categories_id INT, name VARCHAR(50), PRIMARY KEY (id), FOREIGN KEY (Categories_id)"
     		+ " REFERENCES Categories(id));";
 
     public String queryRelationTable =  "SELECT *  FROM Categories JOIN Categories"
-    		+ "_sub ON Categories.id=Categories_sub.main_id WHERE Categories.name"
-    		+ " = 'Motoryzacja';";
+    		+ "_sub ON Categories.id=Categories_sub.Categories_id WHERE Categories.name"
+    		+ " = 'Słodycze';";
 }
